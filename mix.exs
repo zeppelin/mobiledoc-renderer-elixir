@@ -5,6 +5,8 @@ defmodule MobileDoc.Mixfile do
     [app: :mobiledoc,
      version: "0.0.1",
      elixir: "~> 1.0",
+     description: description,
+     package: package,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps]
@@ -28,5 +30,18 @@ defmodule MobileDoc.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [{:mix_test_watch, "~> 0.2", only: :dev}]
+  end
+
+  defp description do
+    """
+    An HTML renderer for the MobileDoc format used by the ContentKit editor.
+    """
+  end
+
+  defp package do
+    [files: ["lib", "priv", "mix.exs", "README*", "readme*", "LICENSE*", "license*"],
+     contributors: ["Gabor Babicz"],
+     licenses: ["MIT"],
+     links: %{"GitHub" => "https://github.com/zeppelin/mobiledoc-renderer-elixir"}]
   end
 end
