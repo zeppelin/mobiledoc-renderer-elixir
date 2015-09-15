@@ -1,4 +1,4 @@
-MobileDoc
+MobileDoc HTML Renderer for Elixir
 =========
 
-** TODO: Add description **
+**WIP**
