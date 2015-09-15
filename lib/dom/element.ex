@@ -27,6 +27,14 @@ defmodule MobileDoc.Dom.Element do
     html
   end
 
+  def render_opening_tag(tagname, attributes) do
+    "<#{String.downcase(tagname)}#{render_attrs(attributes)}>"
+  end
+
+  def render_closing_tag(tagname) do
+    "</#{String.downcase(tagname)}>"
+  end
+
 
   defp render_attrs(nil), do: ""
   defp render_attrs([]), do: ""
