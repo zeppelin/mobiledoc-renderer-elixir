@@ -3,8 +3,8 @@ defmodule MobileDoc.Renderer do
   alias MobileDoc.Dom.Document
   alias MobileDoc.DocumentMeta
 
-  def render(doc \\ %{sections: []}, cards \\ %{}) do
-    [marker_types, sections] = doc[:sections]
+  def render(doc \\ %{"sections" => []}, cards \\ %{}) do
+    [marker_types, sections] = doc |> Dict.get("sections")
 
     document_meta = init_document_meta(marker_types, cards)
     root = Document.create_element("div")
