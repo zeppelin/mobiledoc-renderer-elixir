@@ -1,2 +1,0 @@
-defmodule MobileDoc do
-end
