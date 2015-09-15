@@ -2,8 +2,11 @@ defmodule MobileDoc.RendererTest do
   use ExUnit.Case
   import MobileDoc.Renderer
 
+  @mobiledoc_version "0.2.0"
+
   test "renders an empty mobiledoc" do
     mobiledoc = %{
+      version: @mobiledoc_version,
       sections: [
         [], # markers
         []  # sections
@@ -15,6 +18,7 @@ defmodule MobileDoc.RendererTest do
 
   test "renders a mobiledoc without markers" do
     mobiledoc = %{
+      version: @mobiledoc_version,
       sections: [
         [], # markers
         [   # sections
@@ -30,6 +34,7 @@ defmodule MobileDoc.RendererTest do
 
   test "renders a mobiledoc with simple (no attributes) marker" do
     mobiledoc = %{
+      version: @mobiledoc_version,
       sections: [
         [        # markers
           ["B"],
@@ -47,6 +52,7 @@ defmodule MobileDoc.RendererTest do
 
   test "renders a mobiledoc with complex (has attributes) marker" do
     mobiledoc = %{
+      version: @mobiledoc_version,
       sections: [
         [        # markers
           ["A", ["href", "http://google.com"]],
@@ -64,6 +70,7 @@ defmodule MobileDoc.RendererTest do
 
   test "renders a mobiledoc with multiple markups in a section" do
     mobiledoc = %{
+      version: @mobiledoc_version,
       sections: [
         [        # markers
           ["B"],
@@ -86,6 +93,7 @@ defmodule MobileDoc.RendererTest do
   test "renders a mobiledoc with image section" do
     url = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs="
     mobiledoc = %{
+      version: @mobiledoc_version,
       sections: [
         [],      # markers
         [        # sections
@@ -104,6 +112,7 @@ defmodule MobileDoc.RendererTest do
     }
 
     mobiledoc = %{
+      version: @mobiledoc_version,
       sections: [
         [],      # markers
         [        # sections
@@ -122,6 +131,7 @@ defmodule MobileDoc.RendererTest do
     }
 
     mobiledoc = %{
+      version: @mobiledoc_version,
       sections: [
         [],      # markers
         [        # sections
@@ -149,6 +159,7 @@ defmodule MobileDoc.RendererTest do
     end
 
     mobiledoc = %{
+      version: @mobiledoc_version,
       sections: [
         [],      # markers
         [        # sections
@@ -171,6 +182,7 @@ defmodule MobileDoc.RendererTest do
     }
 
     mobiledoc = %{
+      version: @mobiledoc_version,
       sections: [
         [],      # markers
         [        # sections
@@ -184,6 +196,7 @@ defmodule MobileDoc.RendererTest do
 
   test "render mobiledoc with list section and list items" do
     mobiledoc = %{
+      version: @mobiledoc_version,
       sections: [
         [],      # markers
         [        # sections
