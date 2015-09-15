@@ -1,0 +1,2 @@
+defmodule MobileDoc do
+end
