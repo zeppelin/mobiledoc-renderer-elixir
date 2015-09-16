@@ -10,6 +10,22 @@ this an HTML renderer for the
 format used by the [ContentKit](https://github.com/bustlelabs/content-kit-editor)
 editor, written in [Elixir](http://elixir-lang.org/).
 
+## Installation
+
+First, add MobileDoc to your `mix.exs` dependencies:
+
+```elixir
+def deps do
+  [{:mobiledoc, ">= 0.0.1"}]
+end
+```
+
+Then, update your dependencies:
+
+```sh-session
+$ mix deps.get
+```
+
 ## Usage
 
 ```elixir
