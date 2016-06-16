@@ -49,7 +49,7 @@ defmodule MobileDoc.Renderer do
 
   # Render valid card
   defp render_card(card, payload) when not is_nil(card) do
-    card.Html.setup(_buffer = [], {}, {}, payload)
+    Module.concat(card, Html).setup(_buffer = [], {}, {}, payload)
     |> Enum.reduce(Document.create_element("div"), fn (string, card_element) ->
       card_element
       |> Element.append_child(Document.create_text_node(string))
