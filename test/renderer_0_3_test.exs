@@ -122,10 +122,12 @@ defmodule MobileDoc.Renderer_0_3_Test do
     mobiledoc = %{
       "version" => @mobiledoc_version,
       "atoms" => [],
-      "cards" => [],
+      "cards" => [
+        [card_name, payload]
+      ],
       "markups" => [],
       "sections" => [
-        [@card_section_type, card_name, payload]
+        [@card_section_type, 0]
       ]
     }
 
@@ -141,10 +143,12 @@ defmodule MobileDoc.Renderer_0_3_Test do
     mobiledoc = %{
       "version" => @mobiledoc_version,
       "atoms" => [],
-      "cards" => [],
+      "cards" => [
+        [card_name, payload]
+      ],
       "markups" => [],
       "sections" => [
-        [@card_section_type, card_name, payload]
+        [@card_section_type, 0]
       ]
     }
 
@@ -169,10 +173,12 @@ defmodule MobileDoc.Renderer_0_3_Test do
     mobiledoc = %{
       "version" => @mobiledoc_version,
       "atoms" => [],
-      "cards" => [],
+      "cards" => [
+        [card_name, payload]
+      ],
       "markups" => [],
       "sections" => [
-        [@card_section_type, card_name, payload]
+        [@card_section_type, 0]
       ]
     }
 
@@ -192,10 +198,12 @@ defmodule MobileDoc.Renderer_0_3_Test do
     mobiledoc = %{
       "version" => @mobiledoc_version,
       "atoms" => [],
-      "cards" => [],
+      "cards" => [
+        [card_name, payload]
+      ],
       "markups" => [],
       "sections" => [
-        [@card_section_type, card_name, payload]
+        [@card_section_type, 0]
       ]
     }
 
@@ -217,5 +225,53 @@ defmodule MobileDoc.Renderer_0_3_Test do
     }
 
     assert render(mobiledoc) == "<div><ul><li>first item</li><li>second item</li></ul></div>"
+  end
+
+  test "render mobiledoc with atom" do
+    defmodule HelloAtom do
+      defmodule Html do
+        def render(text, _options, _env, _payload) do
+          "Hello #{text}"
+        end
+      end
+    end
+
+    mobiledoc = %{
+      "version" => @mobiledoc_version,
+      "atoms" => [
+        ["hello-atom", "Bob", %{ "id" => 42}]
+      ],
+      "cards" => [],
+      "markups" => [],
+      "sections" => [
+        [@markup_section_type, "P", [
+          [@atom_marker_type, [], 0, 0]]
+        ]
+      ]
+    }
+
+    rendered = render(mobiledoc, %{}, %{
+      "hello-atom" => HelloAtom
+    })
+
+    assert rendered == "<div><p>Hello Bob</p></div>"
+  end
+
+  test "render mobiledoc with missing atom falls back to text" do
+    mobiledoc = %{
+      "version" => @mobiledoc_version,
+      "atoms" => [
+        ["hello-atom", "Bob", %{ "id" => 42}]
+      ],
+      "cards" => [],
+      "markups" => [],
+      "sections" => [
+        [@markup_section_type, "P", [
+          [@atom_marker_type, [], 0, 0]]
+        ]
+      ]
+    }
+
+    assert render(mobiledoc) == "<div><p>Bob</p></div>"
   end
 end

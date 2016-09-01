@@ -22,6 +22,7 @@ defmodule MobileDoc.RendererTest do
     mobiledoc = %{
       "version" => "0.3.0",
       "atoms" => [],
+      "cards" => [],
       "markups" => [],
       "sections" => [
         [1, "P", [
