@@ -14,17 +14,17 @@ defmodule MobileDoc.Dom.Element do
   def to_s({tagname, attributes, content}) do
     html = "<#{tagname}#{render_attrs(attributes)}>"
 
-    unless void_tag?(tagname) do
+    if void_tag?(tagname) do
+      html
+    else
       content = cond do
         is_list(content) -> content |> Enum.map(&to_s(&1)) |> Enum.join
         content == nil -> ""
         is_binary(content) -> content
       end
 
-      html = html <> content <> "</#{tagname}>"
+      html <> content <> "</#{tagname}>"
     end
-
-    html
   end
 
   def render_opening_tag(tagname, attributes) do
