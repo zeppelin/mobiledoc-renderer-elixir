@@ -3,7 +3,7 @@ defmodule MobileDoc.Mixfile do
 
   def project do
     [app: :mobiledoc,
-     version: "0.0.1",
+     version: "0.0.2",
      elixir: "~> 1.0",
      description: description,
      package: package,
@@ -34,7 +34,7 @@ defmodule MobileDoc.Mixfile do
 
   defp description do
     """
-    An HTML renderer for the MobileDoc format used by the ContentKit editor.
+    An HTML renderer for the Mobiledoc format used by the Mobiledoc Kit editor.
     """
   end
 
